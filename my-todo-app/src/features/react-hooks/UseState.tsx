@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import ReconciliationFlow from "./ReconciliationFlow";
 import { motion } from "framer-motion";
-import {useStateInfo} from "./useStateInfo.ts";
+import {codeExample} from "./codeExample.ts";
 import CodeSnippet from "../../components/CodeSnippet.tsx";
 
 
 const UseStateDemo: React.FC = () => {
 	const [count, setCount] = useState(0);
-	const [flowType, setFlowType] = useState<"increment" | "reset" | null>(null);
+	const [flowType, setFlowType] = useState<"increment" | "reset" | "mounted" | null>("mounted");
 	const [isRunning, setIsRunning] = useState(false);
 
 	const handleIncrement = () => {
@@ -27,7 +27,7 @@ const UseStateDemo: React.FC = () => {
 	return (
 		<div className="flex h-screen">
 			{/* Main Content */}
-			<div className="flex-1 max-w-2xl mx-auto p-6">
+			<div className="flex-1 max-w-3xl mx-auto p-6">
 				<h1 className="text-2xl font-bold mb-4">🔹 Understanding useState</h1>
 				<p className="mb-4 text-gray-700">
 					The <code>useState</code> hook allows us to add state to functional components.
@@ -35,7 +35,7 @@ const UseStateDemo: React.FC = () => {
 				</p>
 
 				{/* Code Snippet */}
-				<CodeSnippet code={useStateInfo.codeExample}/>
+				<CodeSnippet code={codeExample.useState}/>
 
 				{/* Counter UI */}
 				<div className="bg-white p-6 shadow-lg rounded-lg text-center">

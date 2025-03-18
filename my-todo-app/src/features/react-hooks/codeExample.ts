@@ -1,5 +1,5 @@
-export const useStateInfo = {
-	codeExample: `
+export const codeExample = {
+	useState: `
   import { useState } from "react";
   
   function Counter() {
