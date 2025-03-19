@@ -27,8 +27,8 @@ const UseStateDemo: React.FC = () => {
 	return (
 		<div className="flex h-screen">
 			{/* Main Content */}
-			<div className="flex-1 max-w-3xl mx-auto p-6">
-				<h1 className="text-2xl font-bold mb-4">🔹 Understanding useState</h1>
+			<div className="p-6 max-w-4xl mx-auto space-y-6">
+				<h1 className="text-4xl font-extrabold text-blue-600">🔹 Understanding useState</h1>
 				<p className="mb-4 text-gray-700">
 					The <code>useState</code> hook allows us to add state to functional components.
 					When the state updates, React triggers a re-render and follows its reconciliation process.
