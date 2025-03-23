@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
+import {useMessageStack} from "./MessageStackProvider.tsx";
 const EmptyDependency: React.FC = () => {
 	const [count, setCount] = useState(0);
 
+	const { showMessage } = useMessageStack();
 
 	// 🔹 Simulating API Call (Use Case: Fetching data once)
 	useEffect(() => {
-		messageStackRef?.showMessage("Component mounted or updated");
+		showMessage("📡 Fetching data...");
+		setTimeout(() => {
+			showMessage("✅ Data loaded successfully!");
+		}, 2000);
 		return () => {
-			messageStackRef?.showMessage("Component unmounted or updated");
+			showMessage("🗑️ Cleaning up API request...");
 		};
 	}, []); // ✅ Runs only once on mount
 
@@ -80,14 +85,14 @@ const EmptyDependency: React.FC = () => {
                     <code className="text-sm text-gray-800">
                         {`
 useEffect(() => {
-    console.log("📡 Fetching data...");
+    showMessage("📡 Fetching data...");
 
     setTimeout(() => {
-        console.log("✅ Data loaded successfully!");
+        showMessage("✅ Data loaded successfully!");
     }, 2000);
 
     return () => {
-        console.log("🗑️ Cleaning up API request...");
+        showMessage("🗑️ Cleaning up API request...");
     };
 }, []);
 
@@ -95,7 +100,7 @@ useEffect(() => {
 useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
         if (event.key === "Enter") {
-            console.log("⏎ Enter key pressed!");
+            showMessage("⏎ Enter key pressed!");
         }
     };
 
@@ -103,7 +108,7 @@ useEffect(() => {
 
     return () => {
         window.removeEventListener("keydown", handleKeyPress);
-        console.log("🚫 Removed keyboard listener!");
+        showMessage("🚫 Removed keyboard listener!");
     };
 }, []);
                         `}

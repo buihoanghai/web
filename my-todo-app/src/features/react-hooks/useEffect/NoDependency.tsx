@@ -4,11 +4,15 @@ const NoDependency: React.FC = () => {
 	const [count, setCount] = useState(0);
 	const { showMessage } = useMessageStack();
 	useEffect(() => {
-		showMessage("Component mounted or updated");
+		setTimeout(()=>{
+			showMessage("🔄 Component mounted or updated!");
+		})
 		return () => {
-			showMessage("Component unmounted or updated");
+			setTimeout(()=>{
+				showMessage("🗑️ Component unmounted!");
+			})
 		};
-	}, [count]);
+	});
 
 	const onClick = () => {
 		showMessage("Hello, this is a test message1!");
@@ -58,7 +62,7 @@ useEffect(() => {
     showMessage("🔄 Component mounted or updated!");
 
     return () => {
-        showMessage("🗑️ Component unmounted or updated!");
+        showMessage("🗑️ Component unmounted!");
     };
 });
                         `}
