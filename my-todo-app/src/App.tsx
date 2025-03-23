@@ -23,52 +23,57 @@ import UseDebugValue from "./components/UseDebugValue.tsx";
 import {UseDeferredValueWithout, SearchApp} from "./components/UseDeferredValueWithout.tsx";
 import {FilterApp, UseTransitionFilterApp} from "./components/UseTransition.tsx";
 import AppRoutes from "./routes/AppRoutes";
-import { BrowserRouter as Router } from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import Sidebar from "./components/Sidebar.tsx";
+import {MessageStackProvider} from "./features/react-hooks/useEffect/MessageStackProvider.tsx";
+import MessageStack from "./features/react-hooks/useEffect/MessageStack.tsx";
 
 function App() {
-    return <div>
-        <Router>
-            <div className="flex">
-                <Sidebar />
-                <div className="flex-1 p-4">
-                    <AppRoutes />
-                </div>
-            </div>
-        </Router>
-        {/*<AuthProvider>*/}
-        {/*    <UseTransitionFilterApp/>*/}
-        {/*    <FilterApp/>*/}
-        {/*    <UseCallbackWithoutCounter/>*/}
-        {/*    <UseCallbackCounter/>*/}
-        {/*    <UseCallbackList/>*/}
-        {/*    <UseCallbackWithoutList/>*/}
-        {/*    <ThemeProvider>*/}
-        {/*        <UseContextAuthButtons/>*/}
-        {/*        <UseContextThemeToggle/>*/}
-        {/*        <UseRefVirtualizedList/>*/}
-        {/*        <UseRefBouncingBall/>*/}
-        {/*        <UseEffectPageViewTracker/>*/}
-        {/*        <UseRefCount/>*/}
-        {/*        <UserReducerCounter/>*/}
-        {/*        <UseReducerTodoApp/>*/}
-        {/*    </ThemeProvider>*/}
-        {/*    <TodoApp/>*/}
-        {/*    <PrimeCalculator/>*/}
-        {/*    <UseMemoPrimeCalculator/>*/}
-        {/*    <UseEffectPrimeCalculator/>*/}
-        {/*    <UseImperativeHandleCustomInput/>*/}
-        {/*    <UseLayoutEffectBox/>*/}
-        {/*    <UseLayoutEffectDarkMode/>*/}
-        {/*    <UseDebugValue/>*/}
-        {/*    <div className="flex-row">*/}
-        {/*        <SearchApp/>*/}
-        {/*        <UseDeferredValueWithout/>*/}
-        {/*    </div>*/}
-        {/*</AuthProvider>*/}
+	return <div>
+		<Router>
+			<MessageStackProvider>
+				<MessageStack/>
+				<div className="flex">
+					<Sidebar/>
+					<div className="flex-1 p-4">
+						<AppRoutes/>
+					</div>
+				</div>
+			</MessageStackProvider>
+		</Router>
+		{/*<AuthProvider>*/}
+		{/*    <UseTransitionFilterApp/>*/}
+		{/*    <FilterApp/>*/}
+		{/*    <UseCallbackWithoutCounter/>*/}
+		{/*    <UseCallbackCounter/>*/}
+		{/*    <UseCallbackList/>*/}
+		{/*    <UseCallbackWithoutList/>*/}
+		{/*    <ThemeProvider>*/}
+		{/*        <UseContextAuthButtons/>*/}
+		{/*        <UseContextThemeToggle/>*/}
+		{/*        <UseRefVirtualizedList/>*/}
+		{/*        <UseRefBouncingBall/>*/}
+		{/*        <UseEffectPageViewTracker/>*/}
+		{/*        <UseRefCount/>*/}
+		{/*        <UserReducerCounter/>*/}
+		{/*        <UseReducerTodoApp/>*/}
+		{/*    </ThemeProvider>*/}
+		{/*    <TodoApp/>*/}
+		{/*    <PrimeCalculator/>*/}
+		{/*    <UseMemoPrimeCalculator/>*/}
+		{/*    <UseEffectPrimeCalculator/>*/}
+		{/*    <UseImperativeHandleCustomInput/>*/}
+		{/*    <UseLayoutEffectBox/>*/}
+		{/*    <UseLayoutEffectDarkMode/>*/}
+		{/*    <UseDebugValue/>*/}
+		{/*    <div className="flex-row">*/}
+		{/*        <SearchApp/>*/}
+		{/*        <UseDeferredValueWithout/>*/}
+		{/*    </div>*/}
+		{/*</AuthProvider>*/}
 
-    </div>
-        ;
+	</div>
+		;
 }
 
 export default App;

@@ -1,9 +1,8 @@
-import {useState} from "react";
 import NoDependency from "./useEffect/NoDependency";
 import EmptyDependency from "./useEffect/EmptyDependency";
 import WithDependency from "./useEffect/WithDependency";
-import {NavLink, Outlet, useResolvedPath} from "react-router-dom";
-import { FileText, PlayCircle, RefreshCw } from "lucide-react";
+import {NavLink, Outlet} from "react-router-dom";
+import { FileText} from "lucide-react";
 const examples = [
 	{
 		id: "no-dependency",
@@ -45,9 +44,6 @@ const examples = [
 ];
 
 const UseEffect = () => {
-	const [selectedExample, setSelectedExample] = useState<string | null>(null);
-	const basePath = useResolvedPath("").pathname; // Get current base path
-	const closeExample = () => setSelectedExample(null);
 
 	return (
 		<div className="p-6 max-w-4xl mx-auto space-y-6">
