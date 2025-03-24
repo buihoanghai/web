@@ -3,7 +3,6 @@ import UseEffectPageViewTracker from "./components/UseEffectPageViewTracker.tsx"
 import UseRefCount from "./components/UseRefCount.tsx";
 import UseRefBouncingBall from "./components/UseRefBouncingBall.tsx";
 import UseRefVirtualizedList from "./components/UseRefVirtualizedList.tsx";
-import {ThemeProvider} from "./contexts/ThemeProvider";
 import UseContextThemeToggle from "./components/UseContextThemeToggle.tsx";
 import {AuthProvider} from "./contexts/AuthProvider";
 import {UseContextAuthButtons} from "./components/UseContextAuthButtons.tsx";
@@ -25,21 +24,24 @@ import {FilterApp, UseTransitionFilterApp} from "./components/UseTransition.tsx"
 import AppRoutes from "./routes/AppRoutes";
 import {BrowserRouter as Router} from "react-router-dom";
 import Sidebar from "./components/Sidebar.tsx";
-import {MessageStackProvider} from "./features/react-hooks/useEffect/MessageStackProvider.tsx";
+import {MessageStackProvider} from "./components/MessageStackProvider.tsx";
 import MessageStack from "./features/react-hooks/useEffect/MessageStack.tsx";
+import {ThemeProvider} from "./contexts/ThemeProvider";
 
 function App() {
 	return <div>
 		<Router>
-			<MessageStackProvider>
-				<MessageStack/>
-				<div className="flex">
-					<Sidebar/>
-					<div className="flex-1 p-4">
-						<AppRoutes/>
+			<ThemeProvider>
+				<MessageStackProvider>
+					<MessageStack/>
+					<div className="flex">
+						<Sidebar/>
+						<div className="flex-1 p-4">
+							<AppRoutes/>
+						</div>
 					</div>
-				</div>
-			</MessageStackProvider>
+				</MessageStackProvider>
+			</ThemeProvider>
 		</Router>
 		{/*<AuthProvider>*/}
 		{/*    <UseTransitionFilterApp/>*/}

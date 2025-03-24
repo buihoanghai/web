@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMessageStack } from "./MessageStackProvider.tsx";
+import { useMessageStack } from "../../../components/MessageStackProvider.tsx";
 
 const WithDependency: React.FC = () => {
 	const [count, setCount] = useState(0);

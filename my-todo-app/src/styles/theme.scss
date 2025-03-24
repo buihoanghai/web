@@ -1,0 +1,36 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #007bff;
+  --bg-strong-text: #f3f4f6;
+  --strong-text: #42506b;
+  --button-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a202c;
+  --text-color: #ffffff;
+  --button-bg: #63b3ed;
+  --bg-strong-text: #1b57cd;
+  --strong-text: #ffffff;
+  --button-text: #000000;
+}
+
+.theme-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.theme-bg-text {
+  background-color: var(--bg-strong-text);
+  color: var(--strong-text);
+}
+
+.theme-button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
