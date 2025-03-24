@@ -1,9 +1,10 @@
-import React from "react";
-import {useMessageStack} from "../../hooks/useMessageStack.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 import {AnimatePresence, motion} from "framer-motion";
 
-const MessageStackDisplay: React.FC = () => {
-	const messages = useMessageStack();
+const MessageStackDisplay = () => {
+	const messages = useSelector((state: RootState) => state.messages.messages);
+
 	return (
 		<div className="fixed bottom-4 right-4 space-y-2">
 			<AnimatePresence>

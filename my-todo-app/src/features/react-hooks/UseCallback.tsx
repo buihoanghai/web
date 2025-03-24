@@ -1,33 +1,37 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {showMessage} from "../../hooks/useMessageStack";
+import { useDispatch } from "react-redux";
+import { showMessage } from "../../store/messageSlice";
 // 🔹 Child Component WITHOUT `useCallback` (Always Re-renders)
 const ChildComponentWithoutUseCallback = ({ handleClick }: { handleClick: () => void }) => {
+	const dispatch = useDispatch();
+
 	useEffect(() => {
-		showMessage("❌ Child Component Without useCallback Rendered!");
+		dispatch(showMessage("❌ Child Component Without useCallback Rendered!"));
 	});
 	return <button onClick={handleClick} className="px-4 py-2 bg-red-500 text-white rounded">Without useCallback</button>;
 };
 // Child Component that receives a memoized function
 const ChildComponent = React.memo(({handleClick}: { handleClick: () => void }) => {
+	const dispatch = useDispatch();
 	useEffect(() => {
-		showMessage("Child Component useCallback Mounted!");
+		dispatch(showMessage("Child Component useCallback Mounted!"));
 	});
 	return <button onClick={handleClick}>Click Me</button>;
 });
 
 const UseCallback: React.FC = () => {
 	const [count, setCount] = useState(0);
-
+	const dispatch = useDispatch();
 	// Memoized function to prevent unnecessary re-renders
 	const handleClick = useCallback(() => {
-		showMessage("Button Clicked!");
+		dispatch(showMessage("Button Clicked!"));
 	}, []);
 	const handleClickWithoutUseCallback = () => {
-		showMessage("❌ Button Without useCallback Clicked!");
+		dispatch(showMessage("❌ Button Without useCallback Clicked!"));
 	};
 
 	useEffect(() => {
-		showMessage(`Count: ${count}`);
+		dispatch(showMessage(`Count: ${count}`));
 	}, [count]);  // ✅ Runs only when `count` changes
 
 	const onClick = () => {
@@ -71,7 +75,7 @@ const memoizedFunction = useCallback(() => {
           <code className="text-sm text-gray-800">
             {`
 const handleClick = useCallback(() => {
-  showMessage("Button Clicked!");
+  addMessage("Button Clicked!");
 }, []);
             `}
           </code>
@@ -89,7 +93,7 @@ const handleClick = useCallback(() => {
           <code className="text-sm text-gray-800">
             {`
 const expensiveFunction = useCallback(() => {
-  showMessage("Performing expensive calculation...");
+  addMessage("Performing expensive calculation...");
   return count * 2;
 }, [count]);
             `}

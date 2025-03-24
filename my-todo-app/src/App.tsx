@@ -21,16 +21,19 @@ import UseLayoutEffectDarkMode from "./components/UseLayoutEffectDarkMode.tsx";
 import UseDebugValue from "./components/UseDebugValue.tsx";
 import {UseDeferredValueWithout, SearchApp} from "./components/UseDeferredValueWithout.tsx";
 import {FilterApp, UseTransitionFilterApp} from "./components/UseTransition.tsx";
+import {Provider} from "react-redux";
+import {store} from "./store/store";
 import AppRoutes from "./routes/AppRoutes";
 import {BrowserRouter as Router} from "react-router-dom";
 import Sidebar from "./components/Sidebar.tsx";
 import {ThemeProvider} from "./contexts/ThemeProvider";
-import MessageStackDisplay from "./components/MessageStack/MessageStackDisplay.tsx";
-function App() {
+import MessageStackDisplay from "./components/MessageStackDisplay";
 
+function App() {
 	return <div>
 		<Router>
-			<ThemeProvider>
+			<Provider store={store}>
+				<ThemeProvider>
 					<div className="flex">
 						<Sidebar/>
 						<div className="flex-1 p-4">
@@ -38,7 +41,8 @@ function App() {
 							<MessageStackDisplay/>
 						</div>
 					</div>
-			</ThemeProvider>
+				</ThemeProvider>
+			</Provider>
 		</Router>
 		{/*<AuthProvider>*/}
 		{/*    <UseTransitionFilterApp/>*/}
