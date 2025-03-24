@@ -1,26 +1,22 @@
 import React, {useState, useCallback, useEffect} from "react";
-import {useMessageStack} from "../../contexts/MessageStackProvider.tsx";
-
+import {showMessage} from "../../hooks/useMessageStack";
 // 🔹 Child Component WITHOUT `useCallback` (Always Re-renders)
 const ChildComponentWithoutUseCallback = ({ handleClick }: { handleClick: () => void }) => {
-	const { showMessage } = useMessageStack();
 	useEffect(() => {
 		showMessage("❌ Child Component Without useCallback Rendered!");
-	},[showMessage]);
+	});
 	return <button onClick={handleClick} className="px-4 py-2 bg-red-500 text-white rounded">Without useCallback</button>;
 };
 // Child Component that receives a memoized function
 const ChildComponent = React.memo(({handleClick}: { handleClick: () => void }) => {
-	const {showMessage} = useMessageStack();
 	useEffect(() => {
 		showMessage("Child Component useCallback Mounted!");
-	}, []); // ✅ Only triggers once when `showMessage` changes
+	});
 	return <button onClick={handleClick}>Click Me</button>;
 });
 
 const UseCallback: React.FC = () => {
 	const [count, setCount] = useState(0);
-	const {showMessage} = useMessageStack();
 
 	// Memoized function to prevent unnecessary re-renders
 	const handleClick = useCallback(() => {
@@ -32,7 +28,7 @@ const UseCallback: React.FC = () => {
 
 	useEffect(() => {
 		showMessage(`Count: ${count}`);
-	}, [count, showMessage]);  // ✅ Runs only when `count` changes
+	}, [count]);  // ✅ Runs only when `count` changes
 
 	const onClick = () => {
 		setCount(prev => prev + 1)

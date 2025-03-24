@@ -24,23 +24,20 @@ import {FilterApp, UseTransitionFilterApp} from "./components/UseTransition.tsx"
 import AppRoutes from "./routes/AppRoutes";
 import {BrowserRouter as Router} from "react-router-dom";
 import Sidebar from "./components/Sidebar.tsx";
-import {MessageStackProvider} from "./contexts/MessageStackProvider.tsx";
-import MessageStack from "./features/react-hooks/useEffect/MessageStack.tsx";
 import {ThemeProvider} from "./contexts/ThemeProvider";
-
+import MessageStackDisplay from "./components/MessageStack/MessageStackDisplay.tsx";
 function App() {
+
 	return <div>
 		<Router>
 			<ThemeProvider>
-				<MessageStackProvider>
-					<MessageStack/>
 					<div className="flex">
 						<Sidebar/>
 						<div className="flex-1 p-4">
 							<AppRoutes/>
+							<MessageStackDisplay/>
 						</div>
 					</div>
-				</MessageStackProvider>
 			</ThemeProvider>
 		</Router>
 		{/*<AuthProvider>*/}
