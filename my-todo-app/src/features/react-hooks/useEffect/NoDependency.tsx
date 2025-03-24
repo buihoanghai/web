@@ -9,20 +9,13 @@ const NoDependency: React.FC = () => {
 		})
 		return () => {
 			setTimeout(()=>{
-				showMessage("🗑️ Component unmounted!");
+				showMessage("Be care full with Infinity loop!");
 			})
 		};
 	});
 
-	const onClick = () => {
-		showMessage("Hello, this is a test message1!");
-		showMessage("Hello, this is a test message2!");
-	};
 	return (
 		<div className="p-6 bg-white shadow-md rounded-lg max-w-xl mx-auto mt-10 relative">
-			<button onClick={onClick}>
-				Show Message
-			</button>
 			{/* 🔹 Brief */}
 			<section className="mb-6">
 				<h3 className="text-xl font-semibold mb-2">Brief</h3>

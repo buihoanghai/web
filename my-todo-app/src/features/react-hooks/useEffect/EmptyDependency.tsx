@@ -20,7 +20,7 @@ const EmptyDependency: React.FC = () => {
 	useEffect(() => {
 		const handleKeyPress = (event: KeyboardEvent) => {
 			if (event.key === "Enter") {
-				showMessage("⏎ Enter key pressed!", 0);
+				showMessage("⏎ Enter key pressed!");
 			}
 		};
 
@@ -28,7 +28,7 @@ const EmptyDependency: React.FC = () => {
 
 		return () => {
 			window.removeEventListener("keydown", handleKeyPress);
-			showMessage("🚫 Removed keyboard listener!", 1000);
+			showMessage("🚫 Removed keyboard listener!");
 		};
 	}, []);
 
@@ -119,7 +119,7 @@ useEffect(() => {
 			{/* 🔹 Button Interaction */}
 			<button
 				onClick={() => {
-					showMessage(`Clicked: Count ${count + 1}`, 1000);
+					showMessage(`Clicked: Count ${count + 1}`);
 					setCount(count + 1);
 				}}
 				className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"

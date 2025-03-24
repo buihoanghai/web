@@ -8,12 +8,12 @@ const WithDependency: React.FC = () => {
 
 	// 🔹 Effect re-runs when `count` changes
 	useEffect(() => {
-		showMessage(`Count changed: ${count}`, 500);
+		showMessage(`Count changed: ${count}`);
 	}, [count]);
 
 	// 🔹 Effect re-runs when `text` changes
 	useEffect(() => {
-		showMessage(`Text changed: ${text}`, 500);
+		showMessage(`Text changed: ${text}`);
 	}, [text]);
 
 	return (
