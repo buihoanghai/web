@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useTheme } from "../../contexts/ThemeProvider";
-import { useMessageStack } from "../../components/MessageStackProvider";
+import { useMessageStack } from "../../contexts/MessageStackProvider.tsx";
 
 const UseContext: React.FC = () => {
 	const {theme, toggleTheme} = useTheme();

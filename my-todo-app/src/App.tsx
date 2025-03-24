@@ -24,7 +24,7 @@ import {FilterApp, UseTransitionFilterApp} from "./components/UseTransition.tsx"
 import AppRoutes from "./routes/AppRoutes";
 import {BrowserRouter as Router} from "react-router-dom";
 import Sidebar from "./components/Sidebar.tsx";
-import {MessageStackProvider} from "./components/MessageStackProvider.tsx";
+import {MessageStackProvider} from "./contexts/MessageStackProvider.tsx";
 import MessageStack from "./features/react-hooks/useEffect/MessageStack.tsx";
 import {ThemeProvider} from "./contexts/ThemeProvider";
 

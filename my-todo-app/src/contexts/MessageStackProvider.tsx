@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState, useCallback, useEffect, useRef} from "react";
+import React, {createContext, useContext, useState, useCallback, useEffect, useRef, useMemo} from "react";
 
 interface Message {
 	id: number;
@@ -6,8 +6,8 @@ interface Message {
 }
 
 interface MessageContextType {
-	showMessage: (text: string) => void;
-	activeMessages: Message[];
+	showMessage?: (text: string) => void;
+	activeMessages?: Message[];
 }
 
 const MessageContext = createContext<MessageContextType | undefined>(undefined);
@@ -15,12 +15,14 @@ const MessageContext = createContext<MessageContextType | undefined>(undefined);
 export const MessageStackProvider = ({children}: { children: React.ReactNode }) => {
 	const [messageQueue, setMessageQueue] = useState<Message[]>([]);
 	const [activeMessages, setActiveMessages] = useState<Message[]>([]);
-	let isProcessing = useRef(false);
+	const isProcessing = useRef(false);
 
 	const showMessage = useCallback((text: string) => {
 		const id = Date.now() + Math.random();
 		setMessageQueue((prev) => [...prev, {id, text}]);
 	}, []);
+	// ✅ Memoize context value to prevent re-renders
+	const value = useMemo(() => ({ showMessage, activeMessages }), [showMessage, activeMessages]);
 	const showMessageQueue = () => {
 		if (isProcessing.current) {
 			return;
@@ -68,13 +70,13 @@ export const MessageStackProvider = ({children}: { children: React.ReactNode }) 
 	}, [messageQueue]);
 
 	return (
-		<MessageContext.Provider value={{showMessage, activeMessages}}>
+		<MessageContext.Provider value={value}>
 			{children}
 		</MessageContext.Provider>
 	);
 };
 
-export const useMessageStack = () => {
+export const useMessageStack =() => {
 	const context = useContext(MessageContext);
 	if (!context) {
 		throw new Error("useMessageStack must be used within a MessageStackProvider");

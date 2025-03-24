@@ -1,4 +1,4 @@
-import { useMessageStack } from "../../../components/MessageStackProvider.tsx";
+import { useMessageStack } from "../../../contexts/MessageStackProvider.tsx";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MessageStack = () => {

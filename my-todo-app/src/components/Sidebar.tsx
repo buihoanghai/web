@@ -17,6 +17,7 @@ const sidebarMenu: SidebarItem[] = [
 			{ title: "useState", path: "/react-hooks/use-state" },
 			{ title: "useEffect", path: "/react-hooks/use-effect" },
 			{ title: "useContext", path: "/react-hooks/use-context" },
+			{ title: "useCallback", path: "/react-hooks/use-callback" },
 		],
 	},
 	// {
